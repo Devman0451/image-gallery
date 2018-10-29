@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from './InfoColumn.module.css';
+
 const infoColumns = (props) => (
-    <div>
-        <h3>What's Hot</h3>
+    <div className={styles['news-list']}>
+        <h3>Popular Artists</h3>
         <ul>
             <li>RJ MacCready</li>
             <li>Bennings</li>

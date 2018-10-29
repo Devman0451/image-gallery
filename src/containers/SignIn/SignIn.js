@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import styles from './SignIn.module.css';
+
 class SignIn extends Component {
     state = {
         email: "",
@@ -33,11 +35,11 @@ class SignIn extends Component {
 
     render() {
         return (
-            <div>
+            <div className={styles['form-container']}>
                 <h1>Sign In</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="email" name="email" placeholder="Email" onKeyDown={this.handleInput} onBlur={this.handleInput}/>
-                    <input type="password" name="password" placeholder="Password" onKeyDown={this.handleInput} onBlur={this.handleInput}/>
+                <form onSubmit={this.handleSubmit} className={styles['form']}>
+                    <input type="email" name="email" placeholder="Email" onKeyUp={this.handleInput} onBlur={this.handleInput}/>
+                    <input type="password" name="password" placeholder="Password" onKeyUp={this.handleInput} onBlur={this.handleInput}/>
                     <button>Submit</button>
                 </form>
             </div>

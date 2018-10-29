@@ -1,0 +1,12 @@
+.news-list {
+    color: var(--main-color);
+}
+
+.news-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.news-list li {
+    line-height: 2;
+}

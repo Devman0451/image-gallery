@@ -1,0 +1,14 @@
+.news {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--main-color-dark);
+    min-height: 600px;
+    padding: 100px;
+    margin: 20px 0;
+}
+
+.news h3 {
+    font-family: 'Slabo 27px', serif;
+    letter-spacing: 2.5px;
+    color: var(--main-color-light);
+}

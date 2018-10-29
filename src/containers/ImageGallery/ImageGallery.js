@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import styles from './ImageGallery.module.css';
+
 import ImageThumb from '../../components/ImageThumb/ImageThumb';
 
 const imgPath = process.env.PUBLIC_URL + '/assets/images/';
@@ -25,8 +27,7 @@ class ImageGallery extends Component {
         })
 
         return (
-            <div>
-                <h1>Image Gallery</h1>
+            <div className={styles['image-gallery']}>
                 {imgs}
             </div>
         );

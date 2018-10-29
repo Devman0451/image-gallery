@@ -1,0 +1,8 @@
+.footer {
+    text-align: center;
+    padding: 10px 10px 20px;
+}
+
+.footer > span {
+    font-weight: bold;
+}

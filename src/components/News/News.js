@@ -1,9 +1,11 @@
 import React from 'react';
 
+import styles from './News.module.css';
+
 import InfoColumn from './InfoColumn/InfoColumn';
 
 const news = (props) => (
-    <div>
+    <div className={styles['news']}>
         <InfoColumn/>
         <div>
             <h3>Latest Submission</h3>

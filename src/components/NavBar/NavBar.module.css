@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.navigation-list {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    font-weight: 700;
+    padding: 0;
+}
+
+.navigation-list > li {
+    margin: 0 10px;
+}
+
+.navigation-list a:hover {
+    color: var(--main-color);
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import styles from '../SignIn/SignIn.module.css';
+
 class SignUp extends Component {
     state = {
         inputs: {
@@ -14,21 +16,15 @@ class SignUp extends Component {
             },
             email: {
                 value: '',
-                validations: {},
+                validations: {
+                    isEmail: true
+                },
                 validated: false
             },
             password: {
                 value: '',
                 validations: {
-                    minLength: 6
-                },
-                validated: false
-            },
-            password2: {
-                value: '',
-                validations: {
-                    minLength: 6,
-                    matchesPwd: true
+                    isPwd: true
                 },
                 validated: false
             }
@@ -39,8 +35,8 @@ class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const authData = {
-            email: this.state.email,
-            password: this.state.password,
+            email: this.state.input.email.value,
+            password: this.state.input.password.value,
             returnSecureToken: true
         }
 
@@ -54,21 +50,62 @@ class SignUp extends Component {
     }
 
     handleInput = (e) => {
+        const updatedInputs = {
+            ...this.state.inputs,
+        };
+
+        const UpdatedInputData = {
+            ...updatedInputs[e.target.name]
+        }
+
+        UpdatedInputData.value = e.target.value;
+        UpdatedInputData.validated = this.checkInputValidation(UpdatedInputData);
+        updatedInputs[e.target.name] = UpdatedInputData;
+
+        const isValid = Object.keys(updatedInputs).every(input => updatedInputs[input].validated === true);
+
         this.setState({
-            [e.target.name]: e.target.value
+            inputs: updatedInputs,
+            formValid: isValid
         });
+    }
+
+    checkInputValidation = (data) => {
+        let isValid = true;
+
+        const value = data.value;
+        const validations = data.validations;
+
+        if (validations.minLength) {
+            isValid = value.length >= validations.minLength && isValid;
+        }
+
+        if (validations.maxLength) {
+            isValid = value.length <= validations.maxLength && isValid;
+        }
+
+        if (validations.isPwd) {
+            const expression = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+            isValid = expression.test(value) && isValid;
+        }
+
+        if(validations.isEmail) {
+            const expression = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = expression.test(value) && isValid;
+        }
+
+        return isValid;
     }
 
     render() {
         return (
-            <div>
+            <div className={styles['form-container']}>
                 <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="name" placeholder="Username"  onKeyDown={this.handleInput} onBlur={this.handleInput}/>
-                    <input type="email" name="email" placeholder="Email"  onKeyDown={this.handleInput} onBlur={this.handleInput}/>
-                    <input type="password" name="password" placeholder="Password"  onKeyDown={this.handleInput} onBlur={this.handleInput}/>
-                    <input type="password" name="password2" placeholder="Re-type password"  onKeyDown={this.handleInput} onBlur={this.handleInput}/>
-                    <button>Submit</button>
+                <form onSubmit={this.handleSubmit} className={styles['form']}>
+                    <input type="text" name="name" placeholder="Username" onKeyUp={this.handleInput} onBlur={this.handleInput} />
+                    <input type="email" name="email" placeholder="Email" onKeyUp={this.handleInput} onBlur={this.handleInput} />
+                    <input type="password" name="password" placeholder="Password" onKeyUp={this.handleInput} onBlur={this.handleInput} />
+                    <button disabled={!this.state.formValid}>Submit</button>
                 </form>
             </div>
         )

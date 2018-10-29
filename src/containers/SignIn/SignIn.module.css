@@ -1,0 +1,38 @@
+.form-container {
+    text-align: center;
+    margin: 50px 0 100px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.form > input {
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.form > button {
+    margin: 10px auto 0;
+    padding: 10px 7px;
+    display: inline-block;
+    width: 140px;
+    font-weight: 700;
+    background-color: var(--main-color-dark);
+    color: white;
+    border: 0;
+    transition: background-color 250ms ease-in-out;
+}
+
+.form > button:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+}
+
+.form > button:disabled {
+    cursor: not-allowed;
+    background-color: var(--main-color-light); 
+}

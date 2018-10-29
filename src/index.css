@@ -1,7 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700|Slabo+27px');
 
+:root {
+    --main-color-light: #ccc;
+    --main-color: #888;
+    --main-color-dark: #333;
+}
+
 body {
     margin: 0 40px;
     font-family: 'Slabo 27px', serif;
     font-family: 'Raleway', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.active:after {
+    margin-top: 3px;
+    display: block;
+    width: 100%;
+    content: "";
+    height: 3px;
+    background-color: var(--main-color);
 }
