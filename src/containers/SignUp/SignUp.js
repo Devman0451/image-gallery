@@ -101,6 +101,7 @@ class SignUp extends Component {
         return (
             <div className={styles['form-container']}>
                 <h1>Sign Up</h1>
+                <p>Password must contain one capital letter, one special character and be 8 characters or more</p>
                 <form onSubmit={this.handleSubmit} className={styles['form']}>
                     <input type="text" name="name" placeholder="Username" onKeyUp={this.handleInput} onBlur={this.handleInput} />
                     <input type="email" name="email" placeholder="Email" onKeyUp={this.handleInput} onBlur={this.handleInput} />

@@ -3,10 +3,16 @@
 }
 
 .news-list ul {
+    width: 250px;
     list-style: none;
     padding: 0;
 }
 
+.news-list h3 {
+    font-size: 30px;
+}
+
 .news-list li {
     line-height: 2;
+    font-size: 20px;
 }

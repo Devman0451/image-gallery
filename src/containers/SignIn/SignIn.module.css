@@ -36,3 +36,9 @@
     cursor: not-allowed;
     background-color: var(--main-color-light); 
 }
+
+p {
+    width: 300px;
+    text-align: center;
+    margin: 15px auto;
+}

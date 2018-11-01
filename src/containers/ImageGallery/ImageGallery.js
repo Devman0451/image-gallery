@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './ImageGallery.module.css';
 
@@ -13,16 +14,21 @@ class ImageGallery extends Component {
             'img2.jpeg',
             'img3.jpeg',
             'img4.jpeg',
-            'img5.jpeg'
+            'img5.jpeg',
+            'img6.jpeg',
+            'img7.jpeg',
+            'img8.jpeg',
+            'img9.jpeg'
         ]
     };
 
     render() {
         const imgs = this.state.imgs.map(imageName => {
             return (
-                <ImageThumb 
-                    key={imageName}
-                    imagePath={`${imgPath + imageName}`}/>
+                <Link to={'/images/' + imageName} key={imageName}>
+                    <ImageThumb
+                        imagePath={`${imgPath + imageName}`} />
+                </Link>
             );
         })
 

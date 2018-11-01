@@ -2,19 +2,22 @@ import React from 'react';
 
 import styles from './InfoColumn.module.css';
 
-const infoColumns = (props) => (
-    <div className={styles['news-list']}>
-        <h3>Popular Artists</h3>
-        <ul>
-            <li>RJ MacCready</li>
-            <li>Bennings</li>
-            <li>Windows</li>
-            <li>Doc</li>
-            <li>Palmer</li>
-            <li>Childs</li>
-            <li>Nauls</li>
-        </ul>
-    </div>
-);
+const infoColumns = (props) => {
+
+    const listItems = props.items.map(listItem => {
+        return (
+            <li key={listItem}>{listItem}</li>
+        );
+    });
+
+    return (
+        <div className={styles['news-list']}>
+            <h3>{props.title}</h3>
+            <ul>
+                {listItems}
+            </ul>
+        </div>
+    );
+};
 
 export default infoColumns;

@@ -13,8 +13,10 @@ const imageThumb = (props) => {
     return (
         <div style={imgStyle} className={styles['image-thumb']}>
             <div className={styles['image-thumb-text']}>
-                <h3>Title</h3>
-                <h5>Author</h5>
+                <div className={styles['image-thumb-textbox']}>
+                    <h3>Title</h3>
+                    <h5>Author</h5>
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,19 @@
+.comment-section {
+    border: 1px solid gray;
+    margin: 30px;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.comment {
+    border-bottom: 1px solid lightgray;
+}
+
+.comment p {
+    text-align: left;
+    width: 100%;
+}
+
+.comment span {
+    font-weight: 700;
+}
