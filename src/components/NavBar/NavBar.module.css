@@ -20,3 +20,8 @@
 .navigation-list a:hover {
     color: var(--main-color);
 }
+
+.navigation-list > li:hover {
+    color: var(--main-color);
+    cursor: pointer;
+}

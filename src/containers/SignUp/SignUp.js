@@ -4,6 +4,8 @@ import axios from 'axios';
 import styles from '../SignIn/SignIn.module.css';
 
 class SignUp extends Component {
+
+    //All state.inputs objects must have true validated property for the submit button to become active.
     state = {
         inputs: {
             name: {
@@ -35,8 +37,9 @@ class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const authData = {
-            email: this.state.input.email.value,
-            password: this.state.input.password.value,
+            name: this.state.inputs.name.value,
+            email: this.state.inputs.email.value,
+            password: this.state.inputs.password.value,
             returnSecureToken: true
         }
 
@@ -45,7 +48,7 @@ class SignUp extends Component {
                 const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${res.data.apiKey}`;
                 return axios.post(endPoint, authData);
             }).then(res => {
-                console.log(res);
+                this.props.history.push("/");
             })
     }
 
@@ -98,10 +101,11 @@ class SignUp extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className={styles['form-container']}>
                 <h1>Sign Up</h1>
-                <p>Password must contain one capital letter, one special character and be 8 characters or more</p>
+                <p>Password must contain one capital letter, one special character, a number, and be 8 characters or more</p>
                 <form onSubmit={this.handleSubmit} className={styles['form']}>
                     <input type="text" name="name" placeholder="Username" onKeyUp={this.handleInput} onBlur={this.handleInput} />
                     <input type="email" name="email" placeholder="Email" onKeyUp={this.handleInput} onBlur={this.handleInput} />

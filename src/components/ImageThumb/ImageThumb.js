@@ -7,7 +7,8 @@ const imageThumb = (props) => {
         background: `url(${props.imagePath})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        width: '100%'
     };
 
     return (

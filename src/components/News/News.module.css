@@ -21,3 +21,27 @@
 img {
     width: 350px;
 }
+
+@media (max-width: 1200px) {
+    .news {
+        padding: 50px;
+        min-height: 400px;
+    }
+
+    .news h3 {
+        font-size: 25px;
+    }
+
+    img {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .news {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}

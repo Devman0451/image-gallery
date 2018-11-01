@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import styles from './SignIn.module.css';
 
 class SignIn extends Component {
+
+    //Internal state used for input value storage only, redux stores the response auth data
     state = {
         email: "",
         password: ""
     };
 
+    //Submit state email and password to firebase.  Response data is dispatched to authReducer
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -23,7 +27,8 @@ class SignIn extends Component {
                 const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${res.data.apiKey}`;
                 return axios.post(endPoint, authData);
             }).then(res => {
-                console.log(res);
+                this.props.signInUser(res.data);
+                this.props.history.push('/');
             })
     }
 
@@ -47,4 +52,10 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signInUser: (authData) => {dispatch({type: "SIGN_IN_USER", authData })}
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignIn);
