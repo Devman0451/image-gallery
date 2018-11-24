@@ -42,3 +42,8 @@ p {
     text-align: center;
     margin: 15px auto;
 }
+
+.error-message {
+    font-weight: 700;
+    color: red
+}

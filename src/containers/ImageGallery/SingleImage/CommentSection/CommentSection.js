@@ -6,8 +6,8 @@ const commentSection = (props) => {
     const comments = props.comments.map(comment => {
         return (
             <div className={styles["comment"]} key={comment.id}>
-                <p><span>{comment.author}</span></p>
-                <p>{comment.body}</p>
+                <p><span>{comment.user}</span></p>
+                <p>{comment.comment}</p>
             </div>
         );
     })

@@ -1,0 +1,36 @@
+.comment {
+    border: 1px solid gray;
+    margin: 30px;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-add-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-add-comment textarea {
+    width: 70%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.form-add-comment > button {
+    margin: 10px auto 0;
+    padding: 10px 7px;
+    display: inline-block;
+    width: 140px;
+    font-weight: 700;
+    background-color: var(--main-color-dark);
+    color: white;
+    border: 0;
+    transition: background-color 250ms ease-in-out;
+}
+
+.form-add-comment > button:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+}
