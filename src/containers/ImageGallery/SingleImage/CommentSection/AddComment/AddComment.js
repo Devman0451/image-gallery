@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import styles from './AddComment.module.css';
 
 class AddComment extends Component {
     state = {
-        comment: ''
+        comment: '',
+        postSuccess: false
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.get('https://image-gallery-adf56.firebaseio.com/Images.json')
-        .then(res => {
-            const comments = res.data[this.props.fileName.split('.')[0]];
-            console.log(comments);
-        })
+        const newComment = {
+            comment: this.state.comment,
+            id: Math.random()
+        }
+
+        axios.get(`https://image-gallery-adf56.firebaseio.com/Images/${this.props.fileName.split('.')[0]}/comments.json`)
+            .then(res => {
+                axios.post(`https://image-gallery-adf56.firebaseio.com/Images/${this.props.fileName.split('.')[0]}/comments.json`, newComment)
+                    .then(res => {
+                        this.setState({ postSuccess: true });
+                    })
+            })
 
     }
 
@@ -26,15 +35,26 @@ class AddComment extends Component {
     }
 
     render() {
+        const msg = this.state.postSuccess ? <p>Post Submitted!</p> : null;
+
         return (
+            <>
+            {msg}
             <div className={styles["comment"]}>
-            <form onSubmit={this.handleSubmit} className={styles["form-add-comment"]}>
-                <textarea onKeyUp={this.handleInput}></textarea>
-                <button type="submit">Add Comment</button>
-            </form>
+                <form onSubmit={this.handleSubmit} className={styles["form-add-comment"]}>
+                    <textarea onKeyUp={this.handleInput}></textarea>
+                    <button type="submit">Add Comment</button>
+                </form>
             </div>
+            </>
         );
     };
 };
 
-export default AddComment;
+const mapStateToProps = state => {
+    return {
+        userID: state.userID
+    }
+}
+
+export default connect(mapStateToProps)(AddComment);

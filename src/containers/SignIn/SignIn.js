@@ -27,6 +27,7 @@ class SignIn extends Component {
                 const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${res.data.apiKey}`;
                 return axios.post(endPoint, authData);
             }).then(res => {
+                console.log(res.data);
                 this.props.signInUser(res.data);
                 this.props.history.push('/');
             }).catch(error => {

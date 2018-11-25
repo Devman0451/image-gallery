@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import styles from '../SignIn/SignIn.module.css';
@@ -48,6 +49,7 @@ class SignUp extends Component {
                 const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${res.data.apiKey}`;
                 return axios.post(endPoint, authData);
             }).then(res => {
+                this.props.signInUser(res.data);
                 this.props.history.push("/");
             })
     }
@@ -92,7 +94,7 @@ class SignUp extends Component {
             isValid = expression.test(value) && isValid;
         }
 
-        if(validations.isEmail) {
+        if (validations.isEmail) {
             const expression = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = expression.test(value) && isValid;
         }
@@ -101,7 +103,6 @@ class SignUp extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className={styles['form-container']}>
                 <h1>Sign Up</h1>
@@ -117,4 +118,19 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+    return {
+        signInUser: (authData) => {dispatch({type: "SIGN_IN_USER", authData })},
+        signInFail: () => {dispatch({type: "SIGN_IN_FAIL"})}
+    };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);
+
+// axios.get('https://image-gallery-adf56.firebaseio.com/API.json')
+//                     .then(res => {
+//                         const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key=${res.data.apiKey}`;
+//                         const userName = { displayName: authData.name };
+//                         axios.post(endPoint, userName).catch(err => console.log(err));
+//                         this.props.history.push("/");
+//                     });
