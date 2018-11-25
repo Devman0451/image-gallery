@@ -53,7 +53,7 @@ class AddComment extends Component {
 
 const mapStateToProps = state => {
     return {
-        userID: state.userID
+        userID: state.auth.userID
     }
 }
 

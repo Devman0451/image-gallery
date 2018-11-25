@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { initImages } from '../../store/imageActions';
 
 import styles from './ImageGallery.module.css';
 
@@ -22,6 +25,10 @@ class ImageGallery extends Component {
         ]
     };
 
+    componentDidMount() {
+        this.props.fetchImages();
+    }
+
     render() {
         const imgs = this.state.imgs.map(imageName => {
             return (
@@ -40,4 +47,16 @@ class ImageGallery extends Component {
     };
 };
 
-export default ImageGallery;
+const mapStateToProps = (state) => {
+    return {
+        imgs: state.image.images
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchImages: () => { dispatch(initImages()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGallery);

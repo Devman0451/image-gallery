@@ -29,7 +29,7 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isSignedIn: state.token !== null
+        isSignedIn: state.auth.token !== null
     }
 }
 
