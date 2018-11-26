@@ -22,12 +22,21 @@ class SingleImage extends Component {
     }
 
     render() {
-        const message = this.props.comments.length > 0 ? null : <p>Be the first to comment!</p>
+        // Get comments from the image data as an array
+        const commentsArr = [];
+        if (this.props.imgData.hasOwnProperty('comments')) {
+                const newComments = this.props.imgData.comments;
+                for (let comment of Object.keys(newComments)) {
+                    commentsArr.push(newComments[comment]);
+                }
+            }
+
+        const message = commentsArr.length > 0 ? null : <p>Be the first to comment!</p>
         const button = this.props.isSignedIn ? <AddComment fileName={this.state.fileName} /> : null;
-        const comments = this.props.comments.length === 0 ? <p>Loading...</p> : <CommentSection comments={this.props.comments} />;
+        const comments = commentsArr.length === 0 ? null : <CommentSection comments={commentsArr} />;
         return (
             <div className={styles['image-container']}>
-                <h1>Image Title</h1>
+                <h1>{ this.props.imgData.title || 'Title'}</h1>
                 <img src={imgPath + this.state.fileName} alt="Gallery" />
                 {message}
                 {comments}
@@ -41,7 +50,7 @@ const mapStateToProps = (state) => {
     return {
         isSignedIn: state.auth.token !== null,
         error: state.comment.error,
-        comments: state.comment.comments
+        imgData: state.comment.comments
     }
 }
 

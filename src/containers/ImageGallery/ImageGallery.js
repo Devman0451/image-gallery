@@ -30,11 +30,13 @@ class ImageGallery extends Component {
     }
 
     render() {
-        const imgs = this.state.imgs.map(imageName => {
+        const imgs = this.props.imgs.map(image => {
             return (
-                <Link to={'/images/' + imageName} key={imageName}>
+                <Link to={'/images/' + image.fileName} key={image.fileName}>
                     <ImageThumb
-                        imagePath={`${imgPath + imageName}`} />
+                        author={image.author}
+                        title={image.title}
+                        imagePath={`${imgPath + image.fileName}`} />
                 </Link>
             );
         })

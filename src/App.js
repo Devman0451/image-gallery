@@ -19,7 +19,7 @@ class App extends Component {
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route exact path="/images/:image_id" component={SingleImage} />
+          <Route path="/images/:image_id" component={SingleImage} />
           <Route path="/" component={ImageGallery} />
         </Switch>
         <News />

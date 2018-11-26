@@ -17,17 +17,16 @@ export const fetchCommentsFailed = () => {
 // loads comments for each single image
 export const initComments = (path) => {
     return dispatch => {
-        axios.get('https://image-gallery-adf56.firebaseio.com/Images.json')
+        axios.get(`https://image-gallery-adf56.firebaseio.com/Images/${path}.json`)
             .then(res => {
-                const imgName = path;
-                if (typeof res.data[imgName] !== 'undefined') {
-                    const commentsArr = [];
-                    const newComments = res.data[imgName].comments;
-                    for (let comment of Object.keys(newComments)) {
-                        commentsArr.push(newComments[comment]);
-                    }
-                    dispatch(setComments(commentsArr));
-                }
+                // const imgName = path;
+                // if (typeof res.data[imgName] !== 'undefined') {
+                //     const commentsArr = [];
+                //     const newComments = res.data[imgName].comments;
+                //     for (let comment of Object.keys(newComments)) {
+                //         commentsArr.push(newComments[comment]);
+                //     }
+                dispatch(setComments(res.data));
             })
             .catch(err => {
                 dispatch(fetchCommentsFailed());
