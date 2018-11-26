@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import styles from './SignIn.module.css';
 
+import { checkAuthTimeout } from '../../store/authActions';
+
 class SignIn extends Component {
 
     //Internal state used for input value storage only, redux stores the response auth data
@@ -29,6 +31,7 @@ class SignIn extends Component {
             }).then(res => {
                 console.log(res.data);
                 this.props.signInUser(res.data);
+                this.props.authTimeout(res.data.expiresIn);
                 this.props.history.push('/');
             }).catch(error => {
                 this.props.signInFail();
@@ -66,7 +69,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         signInUser: (authData) => {dispatch({type: "SIGN_IN_USER", authData })},
-        signInFail: () => {dispatch({type: "SIGN_IN_FAIL"})}
+        signInFail: () => {dispatch({type: "SIGN_IN_FAIL"})},
+        authTimeout: (expirationTime) => {dispatch(checkAuthTimeout(expirationTime))}
     };
 };
 

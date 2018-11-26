@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
 import NavBar from './components/NavBar/NavBar';
@@ -29,4 +30,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './SingleImage.module.css';
+
 import CommentSection from './CommentSection/CommentSection';
 import AddComment from './CommentSection/AddComment/AddComment';
+import Loader from '../../../components/Loader/Loader';
 
 import { initComments } from '../../../store/commentsActions';
 
