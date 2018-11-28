@@ -27,7 +27,7 @@ npm install npm@latest -g
 git clone https://github.com/Devman0451/image-gallery
 ```
 
-2. Run npm install inside project root folder to install needed packages.
+2. Run npm install inside the project root folder to install needed packages.
 
 ```
 npm install
