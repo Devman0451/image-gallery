@@ -9,6 +9,7 @@ import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import SingleImage from './containers/ImageGallery/SingleImage/SingleImage';
 import News from './components/News/News';
+import Showcase from './components/Showcase/Showcase';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/" component={ImageGallery} />
         </Switch>
         <News />
+        <Showcase />
         <Footer />
       </Layout>
     );

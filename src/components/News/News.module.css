@@ -16,10 +16,12 @@
     letter-spacing: 2.5px;
     color: var(--main-color-light);
     font-size: 30px;
+    text-transform: uppercase;
 }
 
 img {
     width: 350px;
+    margin-top: 15px
 }
 
 @media (max-width: 1200px) {

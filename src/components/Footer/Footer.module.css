@@ -3,6 +3,83 @@
     padding: 20px 20px;
 }
 
+.footer > h1, .footer > h2 {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.FooterContainer {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 40px;
+}
+
+.FooterColumn1,
+.FooterColumn2,
+.FooterColumn3 {
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.FooterColumn2 {
+    font-size: 24px;
+    padding: 0;
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.FooterColumn1,
+.FooterColumn3 {
+    line-height: 2;
+    padding: 0 50px;
+    position: relative;
+}
+
+.FooterColumn1:before,
+.FooterColumn3:before {
+    position: absolute;
+    left: -5vw;
+    top: -50px;
+    display: block;
+    width: 25vw;
+    content: "";
+    height: 1px;
+    background-color: var(--main-color);
+}
+
+.FooterSubscribe > input {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    text-transform: uppercase;
+    text-align: center;
+    background: transparent;
+    outline: 0;
+    border: 1px solid var(--main-color-dark);
+    color: var(--main-color-dark);
+    padding: 15px 0;
+}
+
+.FooterSubscribe > input::placeholder {
+    color: var(--main-color-dark);
+    opacity: 1;
+}
+
+.FooterSubscribe > input:nth-child(2) {
+    transition: all 150ms ease-in-out;
+}
+
+.FooterSubscribe > input:nth-child(2):hover {
+    background: var(--main-color-dark);
+    color: white;
+    cursor: pointer;
+}
+
 .footer > span {
     font-weight: bold;
+}
+
+.footer p {
+    padding: 50px 0;
 }
