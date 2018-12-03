@@ -69,30 +69,30 @@
 @media (max-width: 1300px) {
 
     .ShowcaseList {
-        left: 20%;
+        left: 15%;
     }
 
     .ArtistInfo > h2 {
-        margin: 0 0 0 20%;
+        margin: 0 0 0 15%;
     }
 
     .ShowcaseLink {
-        margin-left: 20%;
+        margin-left: 15%;
     }
 }
 
 @media (max-width: 1000px) {
 
     .ShowcaseList {
-        left: 10%;
+        left: 5%;
     }
 
     .ArtistInfo > h2 {
-        margin: 0 0 0 10%;
+        margin: 0 0 0 5%;
     }
 
     .ShowcaseLink {
-        margin-left: 10%;
+        margin-left: 5%;
     }
 }
 
