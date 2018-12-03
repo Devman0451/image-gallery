@@ -15,6 +15,20 @@ class Showcase extends Component {
 
     render() {
 
+        const linksArr = [];
+
+        if (this.props.profile !== null) {
+            for(let image of Object.keys(this.props.profile.images)) {
+                linksArr.push(this.props.profile.images[image]);
+            }
+        }
+
+        const links = linksArr.length === 0 ? null : (
+            linksArr.map(image => (
+                <li><a href={image.imageurl}>{image.title}</a></li>
+            ))
+        )
+
         const profile = this.props.profile === null ? null : (
             <div className={styles["ArtistInfo"]}>
                 <h2>{this.props.profile.name}</h2>
@@ -28,13 +42,7 @@ class Showcase extends Component {
                 <h1>Artist Spotlight</h1>
                 <img src={imgPath + "artist.jpg"} alt="artist" />
                 <ul className={styles["ShowcaseList"]}>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
-                    <li><a>Image</a></li>
+                    {links}
                 </ul>
                 {profile}
             </div>
