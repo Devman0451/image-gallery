@@ -65,3 +65,64 @@
 .ShowcaseLink:hover {
     color: var(--main-color);
 }
+
+@media (max-width: 1300px) {
+
+    .ShowcaseList {
+        left: 20%;
+    }
+
+    .ArtistInfo > h2 {
+        margin: 0 0 0 20%;
+    }
+
+    .ShowcaseLink {
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .ShowcaseList {
+        left: 10%;
+    }
+
+    .ArtistInfo > h2 {
+        margin: 0 0 0 10%;
+    }
+
+    .ShowcaseLink {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .Showcase > h1 {
+        font-size: 40px;
+    }
+
+    .Showcase > img { 
+        position: static;
+    }
+
+    .ShowcaseList {
+        position: static;
+        padding: 0;
+    }
+
+    .ArtistInfo > h2 {
+       font-size: 30px;
+       margin: 0;
+    }
+
+    .ShowcaseLink {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .ArtistInfo > h2, .ShowcaseLink { 
+        text-align: center;
+    }
+}

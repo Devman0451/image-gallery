@@ -25,3 +25,9 @@ a.active:after {
     height: 3px;
     background-color: var(--main-color);
 }
+
+@media (max-width: 500px) {
+    body {
+        margin: 0;
+    }
+}
