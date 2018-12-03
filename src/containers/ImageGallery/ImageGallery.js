@@ -11,20 +11,7 @@ import ImageThumb from '../../components/ImageThumb/ImageThumb';
 const imgPath = process.env.PUBLIC_URL + '/assets/images/';
 
 class ImageGallery extends Component {
-    state = {
-        imgs: [
-            'img1.jpeg',
-            'img2.jpeg',
-            'img3.jpeg',
-            'img4.jpeg',
-            'img5.jpeg',
-            'img6.jpeg',
-            'img7.jpeg',
-            'img8.jpeg',
-            'img9.jpeg'
-        ]
-    };
-
+    
     componentDidMount() {
         this.props.fetchImages();
     }

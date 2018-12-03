@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 
 import authReducer from './store/authReducer';
 import commentReducer from './store/commentsReducer';
+import profileReducer from './store/profileReducer';
 import imageReducer from './store/imageReducer';
 import 'normalize.css';
 import './index.css';
@@ -18,8 +19,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     auth: authReducer,
     comment: commentReducer,
-    image: imageReducer
-})
+    image: imageReducer,
+    profile: profileReducer
+});
 
 const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
