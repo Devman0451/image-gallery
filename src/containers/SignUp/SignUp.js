@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { setUsername } from '../../store/authActions';
+
 import styles from '../SignIn/SignIn.module.css';
 
 class SignUp extends Component {
@@ -50,6 +52,7 @@ class SignUp extends Component {
                 return axios.post(endPoint, authData);
             }).then(res => {
                 this.props.signInUser(res.data);
+                this.props.setUsername(this.props.token, authData.name);
                 this.props.history.push("/");
             })
     }
@@ -118,19 +121,18 @@ class SignUp extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        token: state.auth.token
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
-        signInUser: (authData) => {dispatch({type: "SIGN_IN_USER", authData })},
-        signInFail: () => {dispatch({type: "SIGN_IN_FAIL"})}
+        signInUser: (authData) => { dispatch({ type: "SIGN_IN_USER", authData }) },
+        signInFail: () => { dispatch({ type: "SIGN_IN_FAIL" }) },
+        setUsername: (token, name) => { dispatch(setUsername(token, name)) }
     };
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
-
-// axios.get('https://image-gallery-adf56.firebaseio.com/API.json')
-//                     .then(res => {
-//                         const endPoint = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key=${res.data.apiKey}`;
-//                         const userName = { displayName: authData.name };
-//                         axios.post(endPoint, userName).catch(err => console.log(err));
-//                         this.props.history.push("/");
-//                     });
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

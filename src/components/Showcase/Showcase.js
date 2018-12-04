@@ -25,7 +25,7 @@ class Showcase extends Component {
 
         const links = linksArr.length === 0 ? null : (
             linksArr.map(image => (
-                <li><a href={image.imageurl}>{image.title}</a></li>
+                <li key={image.title}><a href={image.imageurl}>{image.title}</a></li>
             ))
         )
 

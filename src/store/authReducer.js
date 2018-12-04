@@ -2,6 +2,7 @@
 const initialState = {
     token: null,
     userID: null,
+    uid: null,
     error: false
 }
 
@@ -12,6 +13,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 token: action.authData.idToken,
                 userID: action.authData.localId,
+                uid: action.authData.displayName,
                 error: false
             };
         case "SIGN_IN_FAIL":

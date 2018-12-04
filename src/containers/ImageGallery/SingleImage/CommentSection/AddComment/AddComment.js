@@ -18,7 +18,8 @@ class AddComment extends Component {
         const newComment = {
             comment: this.state.comment,
             id: Math.random(),
-            createdate: Date.now()
+            createdate: Date.now(),
+            user: this.props.userName
         }
 
         axios.get(`https://image-gallery-adf56.firebaseio.com/Images/${this.props.fileName.split('.')[0]}/comments.json`)
@@ -56,7 +57,7 @@ class AddComment extends Component {
 
 const mapStateToProps = state => {
     return {
-        userID: state.auth.userID
+        userName: state.auth.uid
     };
 }
 
