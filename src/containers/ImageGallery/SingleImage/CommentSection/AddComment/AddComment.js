@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { initComments } from '../../../../../store/commentsActions';
 
 import styles from './AddComment.module.css';
 
@@ -15,14 +17,15 @@ class AddComment extends Component {
 
         const newComment = {
             comment: this.state.comment,
-            id: Math.random()
+            id: Math.random(),
+            createdate: Date.now()
         }
 
         axios.get(`https://image-gallery-adf56.firebaseio.com/Images/${this.props.fileName.split('.')[0]}/comments.json`)
             .then(res => {
                 axios.post(`https://image-gallery-adf56.firebaseio.com/Images/${this.props.fileName.split('.')[0]}/comments.json`, newComment)
                     .then(res => {
-                        this.setState({ postSuccess: true });
+                        this.props.fetchComments(this.props.fileName.split('.')[0]);
                     })
             })
 
@@ -39,13 +42,13 @@ class AddComment extends Component {
 
         return (
             <>
-            {msg}
-            <div className={styles["comment"]}>
-                <form onSubmit={this.handleSubmit} className={styles["form-add-comment"]}>
-                    <textarea onKeyUp={this.handleInput}></textarea>
-                    <button type="submit">Add Comment</button>
-                </form>
-            </div>
+                {msg}
+                <div className={styles["comment"]}>
+                    <form onSubmit={this.handleSubmit} className={styles["form-add-comment"]}>
+                        <textarea onKeyUp={this.handleInput}></textarea>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                </div>
             </>
         );
     };
@@ -54,7 +57,13 @@ class AddComment extends Component {
 const mapStateToProps = state => {
     return {
         userID: state.auth.userID
-    }
+    };
 }
 
-export default connect(mapStateToProps)(AddComment);
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchComments: (path) => { dispatch(initComments(path)) }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddComment);

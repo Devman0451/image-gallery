@@ -27,18 +27,21 @@ class SingleImage extends Component {
         // Get comments from the image data as an array
         const commentsArr = [];
         if (this.props.imgData.hasOwnProperty('comments')) {
-                const newComments = this.props.imgData.comments;
-                for (let comment of Object.keys(newComments)) {
-                    commentsArr.push(newComments[comment]);
-                }
+            const newComments = this.props.imgData.comments;
+            for (let comment of Object.keys(newComments)) {
+                commentsArr.push(newComments[comment]);
             }
+        }
+
+        //Newest comments first
+        commentsArr.sort((a, b) => b.createdate - a.createdate);
 
         const message = commentsArr.length > 0 ? null : <p>Be the first to comment!</p>
         const button = this.props.isSignedIn ? <AddComment fileName={this.state.fileName} /> : null;
         const comments = commentsArr.length === 0 ? null : <CommentSection comments={commentsArr} />;
         return (
             <div className={styles['image-container']}>
-                <h1>{ this.props.imgData.title || 'Title'}</h1>
+                <h1>{this.props.imgData.title || 'Title'}</h1>
                 <img src={imgPath + this.state.fileName} alt="Gallery" />
                 {message}
                 {comments}

@@ -9,7 +9,8 @@ const commentsReducer = (state = initialState, action) => {
         case 'SET_COMMENTS':
             return {
                 ...state,
-                comments: action.comments
+                comments: action.comments,
+                error: false
             }
         case 'FETCH_COMMENTS_FAILED':
             return {
