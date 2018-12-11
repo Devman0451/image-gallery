@@ -1,0 +1,9 @@
+.TermsDescription {
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.TermsDescription > p {
+    width: 600px;
+}

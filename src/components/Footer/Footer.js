@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.css';
 
@@ -7,9 +8,9 @@ const footer = () => (
         <h1>Image Gallery</h1>
         <div className={styles["FooterContainer"]}>
             <ul className={styles["FooterColumn1"]}>
-                <li><a href="#!">About</a></li>
-                <li><a href="#!">Terms & Conditions</a></li>
-                <li><a href="#!">Create Account</a></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/terms">Terms & Conditions</Link></li>
+                <li><Link to="/signup">Create Account</Link></li>
             </ul>
             <ul className={styles["FooterColumn2"]}>
                 <li><a href="https://www.linkedin.com/in/justin-myers-712901173/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a></li>

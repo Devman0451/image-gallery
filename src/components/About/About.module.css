@@ -1,0 +1,9 @@
+.AboutDescription {
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.AboutDescription > p {
+    width: 600px;
+}
