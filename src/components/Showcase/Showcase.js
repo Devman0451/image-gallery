@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchShowcaseProfile } from '../../store/profileActions';
@@ -33,14 +34,16 @@ class Showcase extends Component {
             <div className={styles["ArtistInfo"]}>
                 <h2>{this.props.profile.name}</h2>
                 <h2>{this.props.profile.handle}</h2>
-                <a className={styles["ShowcaseLink"]} href={this.props.profile.galleryurl}>Gallery</a>
-                <a className={styles["ShowcaseLink"]} href={this.props.profile.topimagesurl}>Top Rated Images</a>
+                {/* <a className={styles["ShowcaseLink"]} href={this.props.profile.galleryurl}>Gallery</a>
+                <a className={styles["ShowcaseLink"]} href={this.props.profile.topimagesurl}>Top Rated Images</a> */}
+                <Link to="profile/JackBurton" className={styles["ShowcaseLink"]}>Gallery</Link>
+                <Link to="profile/JackBurton" className={styles["ShowcaseLink"]} href={this.props.profile.topimagesurl}>Top Rated Images</Link>
             </div>
         );
         return (
             <div className={styles["Showcase"]}>
                 <h1>Artist Spotlight</h1>
-                <img src={imgPath + "artist.jpg"} alt="artist" />
+                <Link to="profile/JackBurton"><img src={imgPath + "artist.jpg"} alt="artist" className={styles["ShowcaseImage"]} /></Link>
                 <ul className={styles["ShowcaseList"]}>
                     {links}
                 </ul>

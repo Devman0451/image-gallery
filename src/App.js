@@ -10,6 +10,7 @@ import SignUp from './containers/SignUp/SignUp';
 import SignIn from './containers/SignIn/SignIn';
 import SingleImage from './containers/ImageGallery/SingleImage/SingleImage';
 import Footer from './components/Footer/Footer';
+import Profile from './components/Profile/Profile';
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/images/:image_id" component={SingleImage} />
+          <Route path="/profile/:profile_id" component={Profile} />
           <Route path="/" component={Homepage} />
         </Switch>
         <Footer />
