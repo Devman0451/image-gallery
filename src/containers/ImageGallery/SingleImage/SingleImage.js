@@ -26,7 +26,7 @@ class SingleImage extends Component {
     render() {
         // Get comments from the image data as an array
         const commentsArr = [];
-        if (this.props.imgData.hasOwnProperty('comments')) {
+        if (this.props.imgData && this.props.imgData.hasOwnProperty('comments')) {
             const newComments = this.props.imgData.comments;
             for (let comment of Object.keys(newComments)) {
                 commentsArr.push(newComments[comment]);
