@@ -16,7 +16,6 @@ class Profile extends Component {
         if(this.props.profile == null) {
             this.props.fetchProfile(this.props.match.params.profile_id);
         }
-        console.log(this.props.profile);
     }
 
     render() {
