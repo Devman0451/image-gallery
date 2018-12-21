@@ -15,8 +15,8 @@ const imageThumb = (props) => {
         <div style={imgStyle} className={styles['image-thumb']}>
             <div className={styles['image-thumb-text']}>
                 <div className={styles['image-thumb-textbox']}>
-                    <h3>{props.title || 'Title'}</h3>
-                    <h5>{props.author || 'Author'}</h5>
+                    <h3>{props.title || ''}</h3>
+                    <h5>{props.author || ''}</h5>
                 </div>
             </div>
         </div>
