@@ -8,7 +8,6 @@ import ImageThumb from '../../components/ImageThumb/ImageThumb';
 import styles from './Profile.module.css';
 
 const imgPath = process.env.PUBLIC_URL + '/assets/images/';
-const images = ["img10.jpeg", "img11.jpeg", "img12.jpeg", "img13.jpeg", "img14.jpeg"];
 
 class Profile extends Component {
     
@@ -19,18 +18,25 @@ class Profile extends Component {
     }
 
     render() {
+        const linksArr = [];
+        if (this.props.profile !== null) {
+            for(let image of Object.keys(this.props.profile.images)) {
+                linksArr.push(this.props.profile.images[image]);
+            }
+        }
+
         const title = this.props.profile ? this.props.profile.name : "Profile";
         const handle = this.props.profile ? this.props.profile.handle : "@handle";
-        const imgs = images.map(image => {
+        const imgs =  this.props.profile ? linksArr.map(image => {
             return (
-                <Link to={"/images/" + image} key={image}>
+                <Link to={"/" + image.imageurl} key={image.imageurl}>
                     <ImageThumb
                         author=""
-                        title={image}
-                        imagePath={`${imgPath + image}`} />
+                        title={image.title}
+                        imagePath={`${imgPath + image.imageurl.split("/")[1]}`} />
                 </Link>
             )
-        });
+        }) : "No Images";
 
         return (
             <>
